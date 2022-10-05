@@ -77,9 +77,9 @@ const income=await Order.aggregate([
    {
        $project:{
         month: {$month: "$createdAt"},
-        sales:"$amount"
-       },
+        sales:"$amount",
     } ,
+},
        {
            $group:{
                _id:"$month",
@@ -87,7 +87,7 @@ const income=await Order.aggregate([
            }
        } 
 ]);
-res.send(200).json(income);
+res.status(200).send(income);
     }catch(err){
         res.status(500).json(err)
     }
